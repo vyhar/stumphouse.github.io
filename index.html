@@ -341,11 +341,20 @@
     showToast('Settings saved ✓');
   }
 
-  function openConfig() {
-    document.getElementById('cfg-topic').value  = cfg.topic;
-    document.getElementById('cfg-server').value = cfg.server;
-    document.getElementById('cfgPanel').classList.add('show');
+  const SETTINGS_PIN = "4922"; 
+
+function openConfig() {
+  const entered = prompt("Enter settings PIN:");
+
+  if (entered !== SETTINGS_PIN) {
+    showToast("Incorrect PIN");
+    return;
   }
+
+  document.getElementById('cfg-topic').value  = cfg.topic;
+  document.getElementById('cfg-server').value = cfg.server;
+  document.getElementById('cfgPanel').classList.add('show');
+}
 
   function closeConfig() {
     document.getElementById('cfgPanel').classList.remove('show');
