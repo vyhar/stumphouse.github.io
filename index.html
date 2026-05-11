@@ -1,80 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Stumphouse Farms – Check In</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>Stumphouse Farms – Check In</title>
 
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    :root {
-      --green-dark:  #244426;
-      --green-mid:   #61794E;
-      --green-light: #819471;
-      --cream:       #ffffff;
-      --green-bg:    #e8f0e4;
-      --cream-dark:  #ae8c67;
-      --text-main:   #1a2e1a;
-      --text-muted:  #5a6b52;
-      --text-faint:  #8a9b82;
-    }
+:root {
+  --green-dark: #244426;
+  --green-mid: #61794E;
+  --green-light: #819471;
+  --cream: #ffffff;
+  --green-bg: #e8f0e4;
+  --cream-dark: #ae8c67;
+  --text-main: #1a2e1a;
+  --text-muted: #5a6b52;
+  --text-faint: #8a9b82;
+}
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      font-family: 'Georgia', 'Times New Roman', serif;
-      background: var(--green-dark);
-      overflow: hidden;
-    }
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--green-dark);
+  overflow: hidden;
+}
 
-    #app {
-      height: 100vh;
-      width: 100vw;
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-    }
+#app {
+  height: 100vh;
+  width: 100vw;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+}
 
-    .header {
-      background: var(--green-dark);
-      padding: clamp(24px,4vh,48px) clamp(24px,4vw,64px) clamp(20px,3vh,36px);
-      text-align: center;
-      flex-shrink: 0;
-    }
+.header {
+  background: var(--green-dark);
+  padding: clamp(24px,4vh,48px) clamp(24px,4vw,64px) clamp(20px,3vh,36px);
+  text-align: center;
+  flex-shrink: 0;
+}
 
-    .company-name {
-      font-size: clamp(22px,3.5vw,38px);
-      font-weight: bold;
-      color: var(--cream);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
+.company-name {
+  font-size: clamp(22px,3.5vw,38px);
+  font-weight: bold;
+  color: var(--cream);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
 
-    .company-tagline {
-      font-size: clamp(10px,1.4vw,14px);
-      color: var(--green-light);
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
+.company-tagline {
+  font-size: clamp(10px,1.4vw,14px);
+  color: var(--green-light);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
 
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(24px,4vh,56px) clamp(24px,6vw,80px);
-      overflow: hidden;
-    }
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px,4vh,56px) clamp(24px,6vw,80px);
+}
 
-    /* NEW LOGO STYLE */
-   .welcome-logo {
+.welcome-logo {
   width: clamp(220px, 32vw, 420px);
   height: auto;
   display: block;
@@ -82,101 +80,312 @@
   object-fit: contain;
 }
 
-	.welcome {
-	text-align: center;
-  	margin-bottom: clamp(28px,4vh,52px);
-    }
+.welcome {
+  text-align: center;
+  margin-bottom: clamp(28px,4vh,52px);
+}
 
-    .welcome h2 {
-      font-size: clamp(22px,3vw,34px);
-      color: var(--green-dark);
-      margin-bottom: 10px;
-    }
+.welcome h2 {
+  font-size: clamp(22px,3vw,34px);
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
 
-    .welcome p {
-      font-size: clamp(14px,1.8vw,18px);
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+.welcome p {
+  font-size: clamp(14px,1.8vw,18px);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
 
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      width: 100%;https://i.imgur.com/gA0OtfH.png
-      max-width: 900px;
-    }
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  width: 100%;
+  max-width: 900px;
+}
 
-    .pickup-btn {
-      background: white;
-      border: 2.5px solid var(--green-dark);
-      border-radius: 20px;
-      padding: clamp(20px,3vh,32px) clamp(20px,2.5vw,32px);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      text-align: left;
-      transition: background 0.18s ease, transform 0.15s ease;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
+.pickup-btn {
+  background: white;
+  border: 2.5px solid var(--green-dark);
+  border-radius: 20px;
+  padding: clamp(20px,3vh,32px) clamp(20px,2.5vw,32px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  transition: background 0.18s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
 
-    .pickup-btn:hover,
-    .pickup-btn:active {
-      background: var(--green-dark);
-      transform: translateY(-3px);
-    }
+.pickup-btn:hover,
+.pickup-btn:active {
+  background: var(--green-dark);
+  transform: translateY(-3px);
+}
 
-    .pickup-btn:hover .btn-icon,
-    .pickup-btn:active .btn-icon {
-      color: var(--cream);
-    }
+.pickup-btn:hover .btn-icon,
+.pickup-btn:active .btn-icon {
+  color: var(--cream);
+}
 
-    .pickup-btn:hover .btn-title,
-    .pickup-btn:active .btn-title {
-      color: var(--cream);
-    }
+.pickup-btn:hover .btn-title,
+.pickup-btn:active .btn-title {
+  color: var(--cream);
+}
 
-    .pickup-btn:hover .btn-sub,
-    .pickup-btn:active .btn-sub {
-      color: var(--green-light);
-    }
+.pickup-btn:hover .btn-sub,
+.pickup-btn:active .btn-sub {
+  color: var(--green-light);
+}
 
-    .btn-icon {
-      font-size: clamp(28px,4vw,42px);
-      color: var(--green-dark);
-      width: 52px;
-      text-align: center;
-      flex-shrink: 0;
-      transition: color 0.18s;
-    }
+.btn-icon {
+  font-size: clamp(28px,4vw,42px);
+  color: var(--green-dark);
+  width: 52px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color 0.18s;
+}
 
-    .btn-title {
-      font-size: clamp(16px,2vw,22px);
-      font-weight: bold;
-      color: var(--green-dark);
-      margin-bottom: 4px;
-      transition: color 0.18s;
-    }
+.btn-title {
+  font-size: clamp(16px,2vw,22px);
+  font-weight: bold;
+  color: var(--green-dark);
+  margin-bottom: 4px;
+  transition: color 0.18s;
+}
 
-    .btn-sub {
-      font-size: clamp(11px,1.3vw,14px);
-      color: var(--text-faint);
-      transition: color 0.18s;
-    }
+.btn-sub {
+  font-size: clamp(11px,1.3vw,14px);
+  color: var(--text-faint);
+  transition: color 0.18s;
+}
 
-    .footer {
-      background: var(--green-dark);
-      padding: 14px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--green-light);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-  </style>
+.footer {
+  background: var(--green-dark);
+  padding: 14px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--green-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.overlay,
+.cfg-panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,46,26,0.88);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+}
+
+.overlay.show,
+.cfg-panel.show {
+  display: flex;
+}
+
+.modal,
+.cfg-box {
+  background: var(--cream);
+  border-radius: 28px;
+  padding: clamp(36px,5vh,56px) clamp(28px,4vw,48px);
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.modal-icon {
+  font-size: clamp(36px,5vw,56px);
+  margin-bottom: 14px;
+}
+
+.modal h3,
+.cfg-box h3 {
+  font-size: clamp(20px,2.8vw,28px);
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.modal-sub,
+.cfg-note {
+  font-size: clamp(13px,1.5vw,16px);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.name-input,
+.cfg-field input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-family: Georgia, serif;
+  border: 2px solid var(--green-dark);
+  border-radius: 14px;
+  background: white;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.name-input:focus,
+.cfg-field input:focus {
+  border-color: var(--green-mid);
+}
+
+.modal-actions,
+.cfg-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-back,
+.cfg-cancel {
+  flex: 1;
+  padding: 14px;
+  border: 2px solid var(--cream-dark);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 15px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+}
+
+.btn-notify,
+.cfg-save,
+.btn-done {
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--green-dark);
+  color: var(--cream);
+  font-size: 15px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-weight: bold;
+}
+
+.btn-notify {
+  flex: 2;
+}
+
+.btn-done {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.btn-notify:hover,
+.cfg-save:hover,
+.btn-done:hover {
+  background: var(--green-mid);
+}
+
+.status-msg {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-faint);
+  min-height: 20px;
+}
+
+.success-check {
+  width: 80px;
+  height: 80px;
+  background: var(--green-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+  color: var(--cream);
+}
+
+.success-name {
+  font-size: 28px;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+
+.success-msg {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.checkin-time {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 16px 0;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--green-bg);
+  border: 1.5px solid var(--green-dark);
+  color: var(--green-dark);
+  padding: 8px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.cfg-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(45,90,39,0.15);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green-dark);
+  color: var(--cream);
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+}
+</style>
 </head>
 
 <body>
@@ -190,8 +399,11 @@
 
   <main class="main">
 
-    <!-- NEW LOGO -->
-    <img src="https://i.imgur.com/gA0OtfH.png" alt="Stumphouse Farms Logo" class="welcome-logo" />
+    <img
+      src="https://i.imgur.com/2eDK5BY.png"
+      alt="Stumphouse Farms Logo"
+      class="welcome-logo"
+    />
 
     <div class="welcome">
       <h2>Welcome!</h2>
@@ -211,40 +423,291 @@
 
 </div>
 
+<button class="cfg-btn" onclick="openConfig()">⚙️</button>
+
+<div class="cfg-panel" id="cfgPanel">
+  <div class="cfg-box">
+    <h3>Notification Settings</h3>
+
+    <p class="cfg-note">
+      Notifications are sent via <strong>ntfy.sh</strong>.
+    </p>
+
+    <div class="cfg-field">
+      <input
+        type="text"
+        id="cfg-topic"
+        placeholder="Topic Name"
+      />
+    </div>
+
+    <div class="cfg-field">
+      <input
+        type="text"
+        id="cfg-server"
+        placeholder="https://ntfy.sh"
+      />
+    </div>
+
+    <div class="cfg-actions">
+      <button class="cfg-cancel" onclick="closeConfig()">Cancel</button>
+      <button class="cfg-save" onclick="saveConfig()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="nameOverlay">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
+const DEFAULTS = {
+  topic: 'pickupchicks',
+  server: 'https://ntfy.sh'
+};
 
-  const PICKUP_OPTIONS = [
-    {
-      label: 'Chick Pickup',
-      sub: "I'm here to pick up chicks I ordered",
-      icon: '🐣'
-    }
-  ];
+const SETTINGS_PIN = '8800';
 
-  function buildOptions() {
+const PICKUP_OPTIONS = [
+  {
+    label: 'Chick Pickup',
+    sub: "I'm here to pick up chicks I ordered",
+    icon: '🐣'
+  }
+];
 
-    const grid = document.getElementById('optionsGrid');
+let cfg = loadConfig();
+let selectedType = '';
+let selectedIcon = '';
 
-    PICKUP_OPTIONS.forEach(opt => {
+function loadConfig() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('sf_ntfy_cfg') || '{}');
+    return Object.assign({}, DEFAULTS, saved);
+  } catch {
+    return Object.assign({}, DEFAULTS);
+  }
+}
 
-      const btn = document.createElement('button');
+function saveConfig() {
+  const topic = document.getElementById('cfg-topic').value.trim();
+  const server = document.getElementById('cfg-server').value.trim();
 
-      btn.className = 'pickup-btn';
-
-      btn.innerHTML = `
-        <div class="btn-icon">${opt.icon}</div>
-        <div>
-          <div class="btn-title">${opt.label}</div>
-          <div class="btn-sub">${opt.sub}</div>
-        </div>
-      `;
-
-      grid.appendChild(btn);
-    });
+  if (!topic) {
+    showToast('Please enter a topic');
+    return;
   }
 
-  buildOptions();
+  cfg.topic = topic;
+  cfg.server = server || 'https://ntfy.sh';
 
+  localStorage.setItem('sf_ntfy_cfg', JSON.stringify(cfg));
+
+  closeConfig();
+  showToast('Settings saved ✓');
+}
+
+function openConfig() {
+  const entered = prompt('Enter settings PIN:');
+
+  if (entered !== SETTINGS_PIN) {
+    showToast('Incorrect PIN');
+    return;
+  }
+
+  document.getElementById('cfg-topic').value = cfg.topic;
+  document.getElementById('cfg-server').value = cfg.server;
+
+  document.getElementById('cfgPanel').classList.add('show');
+}
+
+function closeConfig() {
+  document.getElementById('cfgPanel').classList.remove('show');
+}
+
+function buildOptions() {
+  const grid = document.getElementById('optionsGrid');
+
+  PICKUP_OPTIONS.forEach(opt => {
+    const btn = document.createElement('button');
+
+    btn.className = 'pickup-btn';
+
+    btn.innerHTML = `
+      <div class="btn-icon">${opt.icon}</div>
+      <div>
+        <div class="btn-title">${opt.label}</div>
+        <div class="btn-sub">${opt.sub}</div>
+      </div>
+    `;
+
+    btn.addEventListener('click', () => {
+      openCheckin(opt.label, opt.icon);
+    });
+
+    grid.appendChild(btn);
+  });
+}
+
+function openCheckin(type, icon) {
+  selectedType = type;
+  selectedIcon = icon;
+
+  renderNameForm();
+
+  document.getElementById('nameOverlay').classList.add('show');
+
+  setTimeout(() => {
+    document.getElementById('customerName').focus();
+  }, 100);
+}
+
+function closeModal() {
+  document.getElementById('nameOverlay').classList.remove('show');
+}
+
+function renderNameForm() {
+  document.getElementById('modalBox').innerHTML = `
+    <div class="modal-icon">${selectedIcon}</div>
+
+    <h3>${selectedType}</h3>
+
+    <p class="modal-sub">
+      Please enter your name so we can notify staff.
+    </p>
+
+    <input
+      class="name-input"
+      type="text"
+      id="customerName"
+      placeholder="Your full name"
+      maxlength="60"
+    />
+
+    <div class="modal-actions">
+      <button class="btn-back" onclick="closeModal()">
+        ← Back
+      </button>
+
+      <button class="btn-notify" id="notifyBtn" onclick="submitCheckin()">
+        Notify Staff →
+      </button>
+    </div>
+
+    <div class="status-msg" id="statusMsg"></div>
+  `;
+
+  document.getElementById('customerName')
+    .addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        submitCheckin();
+      }
+    });
+}
+
+async function submitCheckin() {
+  const inp = document.getElementById('customerName');
+  const name = inp.value.trim();
+
+  if (!name) {
+    inp.style.borderColor = '#c0392b';
+
+    setTimeout(() => {
+      inp.style.borderColor = '';
+    }, 1200);
+
+    return;
+  }
+
+  const btn = document.getElementById('notifyBtn');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Notifying...';
+
+  const status = document.getElementById('statusMsg');
+
+  status.textContent = 'Sending notification…';
+
+  const now = new Date();
+
+  const timeStr = now.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  try {
+    const response = await fetch(cfg.server, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        topic: cfg.topic,
+        title: `${selectedIcon} ${selectedType} – ${name}`,
+        message: `${name} checked in for ${selectedType} at ${timeStr}`,
+        priority: 4,
+        tags: ['bell']
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Notification failed');
+    }
+
+    showSuccess(name, timeStr);
+
+  } catch (err) {
+    console.error(err);
+
+    btn.disabled = false;
+    btn.innerHTML = 'Notify Staff →';
+
+    status.textContent = 'Notification failed';
+  }
+}
+
+function showSuccess(name, timeStr) {
+  const firstName = name.split(' ')[0];
+
+  document.getElementById('modalBox').innerHTML = `
+    <div class="success-check">✓</div>
+
+    <h3 class="success-name">
+      Thank you, ${firstName}!
+    </h3>
+
+    <p class="success-msg">
+      We've notified the team.
+    </p>
+
+    <p class="checkin-time">
+      Checked in at ${timeStr}
+    </p>
+
+    <div class="badge">
+      ${selectedIcon} ${selectedType}
+    </div>
+
+    <button class="btn-done" onclick="closeModal()">
+      Done
+    </button>
+  `;
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+
+  toast.textContent = msg;
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2800);
+}
+
+buildOptions();
 </script>
 
 </body>
